@@ -60,6 +60,5 @@ axios.get(url)  // Layer of request
 .then(query => console.log(query))
 .catch(err => console.log(err))
 //.then(result => console.log(JSON.stringify(result)))
-console.log("end script")
 
     
