@@ -24,6 +24,7 @@ const isUpperAlphaOrBrackets = str => str.match(/^[A-Z]+$|\(.*\)/) && true;
 const isIlksel = str => str.match(/.*(sel)/) ? true:false
 const isRevize = str => str.match(/^[A-Z]+[0-9]+$/) && true;
 
+
 //run
 axios.get(url)  // Layer of request
 .then(response => {   //layer of htmlParse
@@ -31,8 +32,7 @@ axios.get(url)  // Layer of request
     return $('pre').html().split("\n").slice(7);  // We dont need the first 7 lines.
 })
 .then(chunk => chunk.reduce((acc,val)=> { // cleaning data
-    return [...acc, val.split("\n") && val.split(" ").reduce((acc, item )=>
-    item !== '' ? [...acc, item] : acc,[]) ];
+    return [...acc, val.split("\n") && val.split(" ").filter(i =>  i !== '')]
 },[]))
 .then(data => data.map((item) => { //concat data and template
     if(Array.isArray(item)){
@@ -57,8 +57,8 @@ axios.get(url)  // Layer of request
     }
     return [ ...item]
 },[]))
-.then(query => console.log(query))
+.then(result => console.log(JSON.stringify(result)))
 .catch(err => console.log(err))
-//.then(result => console.log(JSON.stringify(result)))
+//.then(query => console.log(query)) test layer
 
     
