@@ -31,7 +31,7 @@ axios.get(url)  // Layer of request
     const $ = cheerio.load(response.data);
     return $('pre').html().split("\n").slice(7);  // We dont need the first 7 lines.
 })
-.then(chunk => chunk.reduce((acc,val)=> { // cleaning data
+.then(chunk => chunk.reduce((acc,val)=> { // split and trim all rows
     return [...acc, val.split("\n") && val.split(" ").filter(i =>  i !== '')]
 },[]))
 .then(data => data.map((item) => { //concat data and template
