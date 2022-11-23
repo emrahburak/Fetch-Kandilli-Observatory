@@ -57,7 +57,7 @@ axios.get(url)  // Layer of request
     }
     return [ ...item]
 },[]))
-.then(result => console.log(JSON.stringify(result)))
+.then(result => console.log(JSON.stringify(result,null,2)))
 .catch(err => console.log(err))
 //.then(query => console.log(query)) test layer
 
